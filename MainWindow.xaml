@@ -1,0 +1,50 @@
+﻿<Window x:Class="JsonFilterCase.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JsonFilterCase"
+        mc:Ignorable="d"
+        Title="Окно очистки дубликатов JSON" Height="300" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel
+            Orientation="Vertical"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Margin="5"
+                    Text="Файл:" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Margin="5"
+                    MaxWidth="350"
+                    TextTrimming="CharacterEllipsis"
+                    Text="{Binding SelectedFileName, UpdateSourceTrigger=PropertyChanged, FallbackValue=...}" />
+            </StackPanel>
+            <Button Padding="10"
+                    Content="Выбрать"
+                    Width="100"
+                    Command="{Binding Path=SelectFileCommand}" />
+        </StackPanel>
+        <Button Grid.Row="1"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Padding="10"
+                Command="{Binding Path=ProcessFileCommand}"
+                Content="Начать обработку" />
+        <Button Grid.Row="2"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Padding="10"
+                Command="{Binding Path=OpenLogFileCommand}"
+                Content="Открыть лог" />
+    </Grid>
+</Window>
